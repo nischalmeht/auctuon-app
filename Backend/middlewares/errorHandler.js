@@ -1,12 +1,11 @@
 class ErrorHandler extends Error {
-    constructor(statusCode, message) {
-        super();
-        this.statusCode = statusCode;
-        this.message = message;
+    constructor(message, statusCode) {
+      super(message);
+      this.statusCode = statusCode;
     }
-}
-
- const errorMiddleware = (err, req, res, next) => {
+  }
+  
+  const errorMiddleware = (err, req, res, next) => {
     err.message = err.message || "Internal server error.";
     err.statusCode = err.statusCode || 500;
   
@@ -35,4 +34,4 @@ class ErrorHandler extends Error {
     });
   };
   
-  module.exports={ErrorHandler,errorMiddleware};
+  module.exports = { ErrorHandler, errorMiddleware };
